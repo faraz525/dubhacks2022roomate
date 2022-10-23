@@ -1,61 +1,51 @@
+import React, { useEffect } from 'react'
 import MessageListItem from '../components/MessageListItem';
 import { useState } from 'react';
 import { Message, getMessages } from '../data/messages';
 import {
+  IonButton,
   IonContent,
   IonHeader,
-  IonList,
   IonPage,
-  IonRefresher,
-  IonRefresherContent,
   IonTitle,
   IonToolbar,
-  useIonViewWillEnter
+  IonList,
+  IonItem,
+  IonThumbnail,
+  IonImg,
+  IonLabel
 } from '@ionic/react';
 import './Home.css';
+import styled from 'styled-components';
 
 
 
 
 const Home: React.FC = () => {
 
-  //apiService.signup("pooks@gmail.com", "pook", "po", "kie", "alder");
-  const [messages, setMessages] = useState<Message[]>([]);
-  
-  useIonViewWillEnter(() => {
-    const msgs = getMessages();
-    setMessages(msgs);
-  });
+  const [input, setInput] = useState<string>('')
 
-  const refresh = (e: CustomEvent) => {
-    setTimeout(() => {
-      e.detail.complete();
-    }, 3000);
-  };
+  useEffect(() =>{
+    console.log(input)
+  }, [input])
+
+  // type Item= {
+  //   src: string;
+  //   text: string;
+  // };
 
   return (
     <IonPage id="home-page">
       <IonHeader>
-        <IonToolbar>
-          <IonTitle>Inbox</IonTitle>
-        </IonToolbar>
+        {/* <IonToolbar>
+          <IonTitle></IonTitle>
+        </IonToolbar> */}
       </IonHeader>
-      <IonContent fullscreen>
-        <IonRefresher slot="fixed" onIonRefresh={refresh}>
-          <IonRefresherContent></IonRefresherContent>
-        </IonRefresher>
-
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">
-              Inbox
-            </IonTitle>
-          </IonToolbar>
-        </IonHeader>
-
-        <IonList>
-          {messages.map(m => <MessageListItem key={m.id} message={m} />)}
-        </IonList>
+      {/* <IonTitle>Roomate</IonTitle> */}
+      <IonContent className="ion-padding">
+        <IonImg src="assets/homepage.png" class="center"></IonImg>
+        <IonButton routerLink="/login" color="primary" class="center">Login</IonButton>
+        <IonButton routerLink="/register" color="primary" class="center">Register</IonButton>
       </IonContent>
     </IonPage>
   );
