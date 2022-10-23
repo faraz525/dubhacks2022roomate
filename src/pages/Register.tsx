@@ -20,6 +20,7 @@ import {
 import { Link } from 'react-router-dom'
 import { personCircle } from 'ionicons/icons';
 import { useParams } from 'react-router';
+import {signup} from '../config/firebase.js';
 
 const Home: React.FC = () => {
     const [username, setUsername] = useState()
@@ -29,7 +30,7 @@ const Home: React.FC = () => {
     const [buildingCode, setBuildingCode] = useState()
 
     function registerUser(){
-        console.log(username, password, firstName, lastName, buildingCode)
+        signup(username, password, firstName, lastName, buildingCode)
     }
     
     return (

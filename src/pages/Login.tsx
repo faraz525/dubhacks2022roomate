@@ -20,16 +20,36 @@ import {
 import { Link } from 'react-router-dom'
 import { personCircle } from 'ionicons/icons';
 import { useParams } from 'react-router';
+import {login} from '../config/firebase.js';
+import { toast } from '../toast';
 
 const Home: React.FC = () => {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
+    var check = true
 
-    function loginUser(){
-        console.log(username, password)
+
+    
+    async function loginUser() {
+        
+        const res = await login(username, password)
+        console.log(res)
+        if(!res){
+            alert("Login failed")
+        }
+        console.log(`${res ? 'Login success': 'Login failed'}`);
     }
 
-    return (
+    const doRedirect = (res: boolean| undefined) => {
+        if (res) {
+          return 'selectbuilding';
+        } else{
+            return 'login';
+        }
+      }
+      
+
+    return(
         <IonPage>
             <IonHeader>
                 <IonToolbar>
@@ -54,8 +74,9 @@ const Home: React.FC = () => {
                         />
                     </IonItem>
                 </IonList>
-                <IonButton onClick={loginUser} routerLink ="/selectbuilding">Login</IonButton>
-                <p>Don't have an account?</p>
+                <IonButton onClick={loginUser} routerLink = {doRedirect(check)}>Login</IonButton>
+                {/* <IonButton onClick={loginUser} routerLink = "/selectbuilding">Login</IonButton>
+                <p>Don't have an account?</p> */}
                 <p><Link to="/register">Sign Up</Link></p>
             </IonContent>
         </IonPage>

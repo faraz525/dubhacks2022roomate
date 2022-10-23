@@ -25,14 +25,23 @@ export async function displayAll() {
 }
 
 export async function login(username, password) {
+  var chec = false;
   const querySnapshot = await firestore.getDocs(firestore.collection(db, "users"));
-    querySnapshot.forEach((doc) => {
+  querySnapshot.forEach((doc) => {
     if (username === doc.id && password === doc.data().password) {
       console.log("true");
-      return true;
+      chec = true;
+      //return true;
+      return;
     }
   });
-  return false;
+  console.log("checl");
+  if (chec === true) {
+    console.log("f")
+    return true;
+  } else {
+    return false;
+  }
 }
 
 export async function signup(email, password, first, last, buildings) {
