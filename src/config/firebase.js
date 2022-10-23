@@ -1,8 +1,6 @@
-// Import the functions you need from the SDKs you need
-import * as firebase from 'firebase'
-import { getDatabase } from "firebase/database";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from "firebase/app";
+import * as firestore from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -12,10 +10,16 @@ const firebaseConfig = {
   storageBucket: "roomate-bd0dc.appspot.com",
   messagingSenderId: "39785220635",
   appId: "1:39785220635:web:d8a27ede173bc7380cc6be"
-}; 
+}
 
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = firestore.getFirestore(app);
 
 // Initialize Firebase
-export default firebase;
+export async function displayAll() {
+    const querySnapshot = await firestore.getDocs(firestore.collection(db, "users"));
+    querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${doc.data().firstName}`);
+  });
+}
 

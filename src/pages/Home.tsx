@@ -13,16 +13,15 @@ import {
   useIonViewWillEnter
 } from '@ionic/react';
 import './Home.css';
-import apiService from '../api/put';
-import { getDatabase } from "firebase/database";
+
+
 
 
 const Home: React.FC = () => {
 
   //apiService.signup("pooks@gmail.com", "pook", "po", "kie", "alder");
   const [messages, setMessages] = useState<Message[]>([]);
-  console.log("hello workd");
-  console.log(apiService.getAllUsers());
+  
   useIonViewWillEnter(() => {
     const msgs = getMessages();
     setMessages(msgs);
