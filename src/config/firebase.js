@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import * as firestore from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, setDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,9 +18,31 @@ const db = firestore.getFirestore(app);
 
 // Initialize Firebase
 export async function displayAll() {
-    const querySnapshot = await firestore.getDocs(firestore.collection(db, "users"));
+  const querySnapshot = await firestore.getDocs(firestore.collection(db, "users"));
     querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data().firstName}`);
+    console.log(doc.id);
   });
+}
+
+export async function login(username, password) {
+  const querySnapshot = await firestore.getDocs(firestore.collection(db, "users"));
+    querySnapshot.forEach((doc) => {
+    if (username === doc.id && password === doc.data().password) {
+      console.log("true");
+      return true;
+    }
+  });
+  return false;
+}
+
+export async function signup(email, password, first, last, buildings) {
+  await firestore.setDoc(firestore.doc(db, "users", email), {
+    firstName: first,
+    lastName: last,
+    password: password,
+    buildings: [buildings]
+  });
+  console.log("signed up")
+  return true;
 }
 

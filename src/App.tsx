@@ -22,11 +22,13 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { displayAll } from "./config/firebase";
+import { displayAll, login, signup } from "./config/firebase";
 
 setupIonicReact();
 console.log("test");
 displayAll();
+login("pookie@gmail.com", "pass");
+signup("faraz@gmail.com", "pass", "faraz", "qurs", "maple");
 
 const App: React.FC = () => (
   <IonApp>
