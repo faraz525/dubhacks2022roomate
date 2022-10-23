@@ -1,4 +1,4 @@
-import MessageListItem from '../components/Posting';
+import Posting from '../components/Posting';
 import { useState } from 'react';
 import { User, getUsers } from '../data/users';
 import {
@@ -91,7 +91,7 @@ const Home: React.FC = () => {
         </IonHeader>
 
         <IonList>
-          {users.map(u => <MessageListItem key={u.email} user={u} />)}
+          {users.map(u => <Posting key={u.email} user={u} />)}
         </IonList>
 
         <IonModal isOpen={myModal.isOpen}>

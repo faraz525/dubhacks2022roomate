@@ -18,9 +18,9 @@ import {
           <IonLabel className="ion-text-wrap">
             <h2>
               {user.firstName} {user.lastName}<br></br>
-              Subject: need asap!<br></br>
-              Item needed: screwdriver<br></br>
-              Need by: 4:30pm.<br></br>
+              Subject: {user.subject}<br></br>
+              Item needed: {user.itemNeeded}<br></br>
+              Need by: {user.needBy}<br></br>
             </h2>
             <IonButton color="success">Accept</IonButton>
           </IonLabel>

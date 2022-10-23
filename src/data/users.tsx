@@ -1,6 +1,9 @@
 export interface User {
       firstName: string;
       lastName: string;
+      subject: string;
+      itemNeeded: string;
+      needBy: string;
       email: string;
       password: string;
       buildingCode: string;
@@ -8,15 +11,11 @@ export interface User {
     
     const users: User[] = [
       {
-        firstName: 'Faraz',
-        lastName: 'Qureshi',
-        email: 'faraz525@uw.edu',
-        password: 'password1',
-        buildingCode: 'willow'
-      },
-      {
         firstName: 'Akriti',
         lastName: 'Shrivastava',
+        subject: 'not too urgent',
+        itemNeeded: 'screwdriver',
+        needBy: '11:00pm',
         email: 'akritish@uw.edu',
         password: 'password2',
         buildingCode: 'maple'
@@ -24,13 +23,19 @@ export interface User {
       {
         firstName: 'Clarissa',
         lastName: 'Choe',
-        email: 'choe7@uw.edu',
+        subject: 'out of TP :(',
+        itemNeeded: 'toilet paper',
+        needBy: '4:25pm',
+        email: 'choe7@uw.edu',
         password: 'password3',
         buildingCode: 'mccarty'
       },
       {
         firstName: 'Zephyr',
         lastName: 'Tao',
+        subject: 'please help!',
+        itemNeeded: 'notebook paper',
+        needBy: '6:00pm',
         email: 'zephtao@uw.edu',
         password: 'password4',
         buildingCode: 'elm'

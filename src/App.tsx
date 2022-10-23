@@ -7,7 +7,6 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import SelectBuilding from './pages/SelectBuilding';
 import AllPostings from './pages/AllPostings';
-import ViewMessage from './pages/ViewMessage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';

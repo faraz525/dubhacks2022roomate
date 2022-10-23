@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import MessageListItem from '../components/MessageListItem';
+import Posting from '../components/Posting';
 import { useState } from 'react';
-import { Message, getMessages } from '../data/messages';
+import { User, getUsers } from '../data/users';
 import {
   IonButton,
   IonContent,
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
       </IonHeader>
       {/* <IonTitle>Roomate</IonTitle> */}
       <IonContent className="ion-padding">
-        <IonImg src="assets/homepage.png" class="center"></IonImg>
+        <IonImg src="assets/title-screen.png" class="center"></IonImg>
         <IonButton routerLink="/login" color="primary" class="center">Login</IonButton>
         <IonButton routerLink="/register" color="primary" class="center">Register</IonButton>
       </IonContent>

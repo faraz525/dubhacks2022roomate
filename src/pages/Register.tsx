@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Message, getMessage } from '../data/messages';
+import { User, getUser } from '../data/users';
 import {
   IonBackButton,
   IonButton,
